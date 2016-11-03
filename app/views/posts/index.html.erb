@@ -11,7 +11,13 @@
           <%= f.text_area :body,class: 'form-control', placeholder: "Text your Post here" %>
         </p>
         <p>
-          <%= f.submit "Create a new post", class: 'btn btn-primary' %>
+          <% if current_user %>
+            <%= f.submit "Create a new post", class: 'btn btn-primary' %>
+          <% else %>
+            <div class="alert alert-danger" role="alert">
+              You must <%= link_to "Sign In", root_url, class: ''%> for create new post
+            </div>
+          <% end %>
         </p>
       <% end %>
     </div>
@@ -31,7 +37,14 @@
     <div class="col-md-6 cooments_form">
       <%= form_for :comment, url: post_comments_path(post) do |f|	%>
         <%= f.text_area :body,class: 'form-control', placeholder: "Text your comment here" %><br>
-        <%= f.submit "Create comment", class: 'btn btn-primary' %>
+
+        <% if current_user %>
+          <%= f.submit "Create comment", class: 'btn btn-primary' %>
+        <% else %>
+          <div class="alert alert-danger" role="alert">
+            You must <%= link_to "Sign In", root_url, class: ''%> for create new comment
+          </div>
+        <% end %>
       <% end %>
     </div>
   </div>
