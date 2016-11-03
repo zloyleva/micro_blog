@@ -5,4 +5,9 @@ class SessionsController < ApplicationController
     session[:user_id] = user.id
     redirect_to posts_path, :notice => "Signed in!" #redirect
   end
+
+  def destroy
+    session[:user_id] = nil
+    redirect_to root_url, :notice => "Signed out!"
+  end
 end
