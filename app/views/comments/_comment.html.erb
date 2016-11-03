@@ -4,9 +4,15 @@
     <b>Comment:</b> <%= comment.body %></i></small>
 
     <div class="cooments_form inline padding-left-20">
-      <%= form_for :comment, url: comment_comments_path(comment) do |f|	%>
-        <%= f.text_field :body, class: 'form-control inline inline-field', placeholder: "Text your comment here" %>
-        <%= f.submit "Create comment", class: 'btn btn-primary' %>
+      <% if current_user %>
+        <%= form_for :comment, url: comment_comments_path(comment) do |f|	%>
+          <%= f.text_field :body, class: 'form-control inline inline-field', placeholder: "Text your comment here" %>
+          <%= f.submit "Create comment", class: 'btn btn-primary' %>
+        <% end %>
+      <% else %>
+        <div class="alert alert-danger" role="alert">
+          You must <%= link_to "Sign In", root_url, class: ''%> for create new comment
+        </div>
       <% end %>
     </div>
 
