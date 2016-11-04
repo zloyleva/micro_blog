@@ -6,7 +6,7 @@ class PostsController < ApplicationController
   def create
     post = Post.new(post_params)
     post.save
-    redirect_to root_url
+    redirect_to posts_path
   end
 
   private

@@ -6,7 +6,7 @@ class CommentsController < ApplicationController
     @comment  =  @parent.comments.new( body:  comment_params[:body])
     @comment.save
 
-    redirect_to root_url
+    redirect_to posts_path
   end
 
   def comment_params
