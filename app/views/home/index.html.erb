@@ -2,9 +2,12 @@
   <div class="row">
     <div class="col-md-12">
       <h1>Welcome to polymorphic microblog</h1>
-      <p>You can sign in with:</p>
+      <% if current_user %>
 
-      <%= link_to "Sign in with Facebook", "/auth/facebook" %> | <%= link_to "Sign in with GitHub", "/auth/github" %>
+      <% else %>
+        <p>You can sign in with:</p>
+        <%= link_to "Sign in with Facebook", "/auth/facebook", class: 'btn btn-default' %>  <%= link_to "Sign in with GitHub", "/auth/github", class: 'btn btn-default' %>
+      <% end %>
     </div>
   </div>
 </div>
